@@ -11,10 +11,7 @@ namespace BankServices
         public static void Main()
         {
             var serviceProvider = SetupDependencyInjection();
-            Console.WriteLine("BankServices started successfully.");
-            var accountRepo = serviceProvider.GetService<IAccountRepository>();
-            var account = accountRepo.GetByAccountNumber("knellyer0010");
-            Console.WriteLine(account);
+            Console.WriteLine("BankServices initialized successfully.");
         }
 
         public static IServiceProvider SetupDependencyInjection()
