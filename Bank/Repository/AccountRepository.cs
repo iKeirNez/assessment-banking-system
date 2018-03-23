@@ -17,10 +17,8 @@ namespace BankServices.Repository
 
         public Account GetByAccountNumber(string accountNumber)
         {
-            using (var cnt = serviceProvider.GetService<AccountContext>())
-            {
-                return cnt.Accounts.Where(a => a.AccountNumber == accountNumber).SingleOrDefault();
-            }
+            var cnt = serviceProvider.GetService<AccountContext>();
+            return cnt.Accounts.Where(a => a.AccountNumber == accountNumber).SingleOrDefault();
         }
     }
 }
