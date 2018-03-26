@@ -13,41 +13,37 @@ namespace Bank.Repository
     /// </summary>
     public class AccountRepository : IAccountRepository
     {
-        private IServiceProvider serviceProvider;
+        private MainContext context;
 
-        public AccountRepository(IServiceProvider serviceProvider)
+        public AccountRepository(MainContext context)
         {
-            this.serviceProvider = serviceProvider;
+            this.context = context;
         }
 
         public Account GetByAccountNumber(string accountNumber)
         {
-            var cnt = serviceProvider.GetService<MainContext>();
-            return cnt.Accounts.Where(a => a.AccountNumber == accountNumber)
+            return context.Accounts.Where(a => a.AccountNumber == accountNumber)
                 .AsNoTracking()
                 .SingleOrDefault();
         }
 
         public void UpdateAccount(Account account)
         {
-            var cnt = serviceProvider.GetService<MainContext>();
-            cnt.Accounts.Attach(account);
-            cnt.Entry(account).State = EntityState.Modified;
-            cnt.SaveChanges();
+            context.Accounts.Attach(account);
+            context.Entry(account).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
         public List<Transaction> GetTransactionsForAccountOnDate(int accountId, DateTimeOffset date)
         {
-            var cnt = serviceProvider.GetService<MainContext>();
-            return cnt.Transactions.Where(t => t.AccountId == accountId && t.Time.Date == date.Date)
+            return context.Transactions.Where(t => t.AccountId == accountId && t.Time.Date == date.Date)
                 .AsNoTracking()
                 .ToList();
         }
 
         public void AddTransaction(Transaction transaction)
         {
-            var cnt = serviceProvider.GetService<MainContext>();
-            cnt.Transactions.Add(transaction);
+            context.Transactions.Add(transaction);
         }
     }
 }
