@@ -21,7 +21,7 @@ namespace Bank.Events
         /// <param name="account">the changed account</param>
         public void OnAccountChangedEvent(Account account)
         {
-            AccountChangedEvent(account);
+            AccountChangedEvent?.Invoke(account);
         }
     }
 }
