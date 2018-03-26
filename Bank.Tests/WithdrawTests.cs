@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bank.Exceptions;
 using Bank.Model;
 using Bank.Repository;
 using Bank.Service;
@@ -20,7 +21,7 @@ namespace Bank.Tests
         public void Withdraw_Normal_Success()
         {
             // setup entities
-            var account = ObjectBuilder.BuildAccount(null, "0000");
+            var account = ObjectBuilder.BuildAccount(null);
             account.Balance = 60;
             var date = DateTimeOffset.UtcNow.Date;
             var transactions = new List<Transaction>()
@@ -65,6 +66,42 @@ namespace Bank.Tests
             caughtAccount.Should().NotBeNull("because repository update account method has been invoked.");
             caughtAccount.Id.Should().Be(account.Id, "because this is the id of the account we updated.");
             caughtAccount.Balance.Should().Be(10, "because the account had 60, then had 50 withdrawn, leaving 10.");
+        }
+
+        /// <summary>
+        /// This simulates an attempt to withdraw with insufficient funds.
+        /// </summary>
+        [TestMethod]
+        public void Withdraw_InsufficientFunds_Exception()
+        {
+            // setup entities
+            var account = ObjectBuilder.BuildAccount(null);
+            account.Balance = 50;
+
+            // setup repo
+            var mockRepo = new Mock<IAccountRepository>(MockBehavior.Strict);
+            //mockRepo.Setup(r => r.GetByAccountNumber(account.AccountNumber)).Returns(account);
+            mockRepo.Setup(r => r.GetTransactionsForAccountOnDate(It.IsAny<int>(), It.IsAny<DateTimeOffset>())).Returns(new List<Transaction>());
+            mockRepo.Setup(r => r.AddTransaction(It.IsAny<Transaction>())).Verifiable();
+            mockRepo.Setup(r => r.UpdateAccount(It.IsAny<Account>())).Verifiable();
+
+            var accountService = new AccountService(mockRepo.Object);
+
+            // attempt to withdraw amount, assert that exception is thrown
+            accountService.Invoking(s =>
+            {
+                // tell fluent assertions to watch events
+                using (var subscriptionService = accountService.SubscriptionService.Monitor())
+                {
+                    s.Withdraw(account, 60);
+                    // assert that no event was raised (if for some reason we get this far)
+                    subscriptionService.Should().NotRaise("AccountChangedEvent", "because this illegal action should not have caused any account change.");
+                }
+            }).Should().ThrowExactly<InsufficientFundsException>();
+
+            // check no changes were made to the entities
+            mockRepo.Verify(r => r.AddTransaction(It.IsAny<Transaction>()), Times.Never, "The repository method add transaction shouldn't have been invoked as the illegal action shouldn't have been a resultant transaction.");
+            mockRepo.Verify(r => r.UpdateAccount(It.IsAny<Account>()), Times.Never, "The repository method update account shouldn't have been invoked as the illegal action shouldn't have caused any account change.");
         }
     }
 }

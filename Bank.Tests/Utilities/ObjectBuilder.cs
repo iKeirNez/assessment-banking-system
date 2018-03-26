@@ -12,7 +12,7 @@ namespace Bank.Tests.Utilities
         private static int nextAccountId = 1;
         private static int nextTransactionId = 1;
 
-        public static Account BuildAccount(string accountNumber, string pin)
+        public static Account BuildAccount(string accountNumber, string pin = "0000")
         {
             if (accountNumber == null)
             {
