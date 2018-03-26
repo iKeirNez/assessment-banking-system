@@ -2,6 +2,7 @@
 using System.Linq;
 using BankServices.Data;
 using BankServices.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankServices.Repository
@@ -19,6 +20,14 @@ namespace BankServices.Repository
         {
             var cnt = serviceProvider.GetService<AccountContext>();
             return cnt.Accounts.Where(a => a.AccountNumber == accountNumber).SingleOrDefault();
+        }
+
+        public void UpdateAccount(Account account)
+        {
+            var cnt = serviceProvider.GetService<AccountContext>();
+            cnt.Accounts.Attach(account);
+            cnt.Entry(account).State = EntityState.Modified;
+            cnt.SaveChanges();
         }
     }
 }

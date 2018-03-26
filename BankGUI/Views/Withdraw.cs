@@ -28,13 +28,16 @@ namespace BankGUI.Views
 
         private void doWithdraw(double amount)
         {
-            if (session.Account.Balance < amount)
+            var account = session.Account;
+
+            if (account.Balance < amount)
             {
                 MessageBox.Show(string.Format("You do not have enough funds to withdraw: {0}", amount), "You broke boi");
                 return;
             }
 
-            // do withdrawal
+            account.Balance -= amount;
+            accountService.UpdateAccount(account);
         }
 
         private void buttonWithdraw10_Click(object sender, EventArgs e)

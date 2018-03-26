@@ -28,7 +28,7 @@ namespace BankGUI.Services
 
         public MainMenu ShowMainMenuView(Session session)
         {
-            var view = new MainMenu(this, session);
+            var view = new MainMenu(this, accountService, session);
             view.UpdateDisplay();
             view.Show();
             return view;

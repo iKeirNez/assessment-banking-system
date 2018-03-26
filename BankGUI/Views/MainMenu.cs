@@ -21,7 +21,7 @@ namespace BankGUI.Interface
         private string welcomeLabelFormat;
         private string balanceLabelFormat;
 
-        public MainMenu(ViewService viewService, Session session)
+        public MainMenu(ViewService viewService, IAccountService accountService, Session session)
         {
             this.viewService = viewService;
             this.session = session;
@@ -30,12 +30,23 @@ namespace BankGUI.Interface
 
             welcomeLabelFormat = welcomeLabel.Text;
             balanceLabelFormat = balanceLabel.Text;
+
+            // register events for account objects updating
+            accountService.SubscriptionService.AccountChangedEvent += onAccountChanged;
         }
 
         public void UpdateDisplay()
         {
             welcomeLabel.Text = string.Format(welcomeLabelFormat, session.Account.FirstName);
             balanceLabel.Text = string.Format(balanceLabelFormat, session.Account.Balance);
+        }
+
+        private void onAccountChanged(Account account)
+        {
+            if (account.Id == session.Account.Id)
+            {
+                UpdateDisplay();
+            }
         }
 
         private void withdrawButton_Click(object sender, EventArgs e)

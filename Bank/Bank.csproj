@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Data\AccountContext.cs" />
     <Compile Include="Data\AccountContextFactory.cs" />
+    <Compile Include="Events\AccountSubscriptionService.cs" />
     <Compile Include="Migrations\20180322133011_InitialCreate.cs" />
     <Compile Include="Migrations\20180322133011_InitialCreate.Designer.cs">
       <DependentUpon>20180322133011_InitialCreate.cs</DependentUpon>
