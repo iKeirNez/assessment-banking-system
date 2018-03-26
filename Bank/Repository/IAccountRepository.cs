@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bank.Model;
-using Bank.Model;
 
 namespace Bank.Repository
 {

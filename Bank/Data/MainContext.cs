@@ -1,6 +1,5 @@
 ﻿using System;
 using Bank.Model;
-using Bank.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bank.Data
@@ -16,6 +15,8 @@ namespace Bank.Data
         public MainContext(DbContextOptions<MainContext> contextOptions) : base(contextOptions)
         {
         }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

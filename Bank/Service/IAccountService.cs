@@ -1,6 +1,5 @@
 ﻿using Bank.Events;
 using Bank.Model;
-using Bank.Model;
 using System;
 
 namespace Bank.Service
