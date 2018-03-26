@@ -2,7 +2,7 @@
 
 namespace Bank.Service
 {
-    public interface ILoginService
+    public interface IAccountService
     {
         Session Login(string accountNumber, string password);
     }

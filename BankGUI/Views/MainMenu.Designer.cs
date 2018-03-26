@@ -28,40 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.headingLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.balanceLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
             this.withdrawButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // headingLabel
+            // welcomeLabel
             // 
-            this.headingLabel.AutoSize = true;
-            this.headingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headingLabel.Location = new System.Drawing.Point(13, 13);
-            this.headingLabel.Name = "headingLabel";
-            this.headingLabel.Size = new System.Drawing.Size(170, 20);
-            this.headingLabel.TabIndex = 0;
-            this.headingLabel.Text = "Welcome back, <user>";
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Location = new System.Drawing.Point(13, 13);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(140, 20);
+            this.welcomeLabel.TabIndex = 0;
+            this.welcomeLabel.Text = "Welcome back, {0}";
             // 
-            // label1
+            // balanceLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Current balance:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "<user-balance>";
+            this.balanceLabel.AutoSize = true;
+            this.balanceLabel.Location = new System.Drawing.Point(13, 37);
+            this.balanceLabel.Name = "balanceLabel";
+            this.balanceLabel.Size = new System.Drawing.Size(102, 13);
+            this.balanceLabel.TabIndex = 1;
+            this.balanceLabel.Text = "Current balance: {0}";
             // 
             // logoutButton
             // 
@@ -80,6 +70,7 @@
             this.withdrawButton.TabIndex = 4;
             this.withdrawButton.Text = "Withdraw";
             this.withdrawButton.UseVisualStyleBackColor = true;
+            this.withdrawButton.Click += new System.EventHandler(this.withdrawButton_Click);
             // 
             // MainMenu
             // 
@@ -88,11 +79,11 @@
             this.ClientSize = new System.Drawing.Size(383, 396);
             this.Controls.Add(this.withdrawButton);
             this.Controls.Add(this.logoutButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.headingLabel);
+            this.Controls.Add(this.balanceLabel);
+            this.Controls.Add(this.welcomeLabel);
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "Main Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,9 +91,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label headingLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label balanceLabel;
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Button withdrawButton;
     }

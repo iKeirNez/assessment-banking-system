@@ -22,7 +22,7 @@ namespace Bank
             serviceCollection.AddDbContext<AccountContext>(options =>
                                                            options.UseSqlServer("Server=127.0.0.1;Database=qaDotNetAdvanced;User Id=app;Password=app;"));
             serviceCollection.AddSingleton<IAccountRepository, AccountRepository>();
-            serviceCollection.AddSingleton<ILoginService, LoginService>();
+            serviceCollection.AddSingleton<IAccountService, AccountService>();
             serviceCollection.AddLogging();
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }

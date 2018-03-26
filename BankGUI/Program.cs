@@ -1,5 +1,6 @@
 ﻿using Bank;
 using Bank.Service;
+using BankGUI.Services;
 using BankServices.Data;
 using BankServices.Repository;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,9 +25,13 @@ namespace BankGUI
             application = new BankApplication();
             application.Init();
 
+            var viewService = ActivatorUtilities.CreateInstance<ViewService>(application.ServiceProvider);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login(application.ServiceProvider.GetService<ILoginService>()));
+
+            viewService.ShowLoginView();
+            Application.Run();
         }
     }
 }

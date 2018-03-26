@@ -4,11 +4,11 @@ using BankServices.Repository;
 
 namespace Bank.Service
 {
-    public class LoginService : ILoginService
+    public class AccountService : IAccountService
     {
         private IAccountRepository accountRepository;
 
-        public LoginService(IAccountRepository accountRepository)
+        public AccountService(IAccountRepository accountRepository)
         {
             this.accountRepository = accountRepository;
         }
@@ -22,7 +22,7 @@ namespace Bank.Service
                 throw new InvalidCredentialsException("An account wasn't found with that username/password combination.");
             }
 
-            return new Session(account.Id, account.AccountNumber, DateTime.Now);
+            return new Session(Guid.NewGuid(), account, DateTime.Now);
         }
     }
 }

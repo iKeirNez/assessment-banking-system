@@ -1,5 +1,6 @@
 ﻿using Bank.Exceptions;
 using Bank.Service;
+using BankGUI.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,13 @@ namespace BankGUI
 {
     public partial class Login : Form
     {
-        private ILoginService loginService;
+        private ViewService viewService;
+        private IAccountService accountService;
 
-        public Login(ILoginService loginService)
+        public Login(ViewService viewService, IAccountService accountService)
         {
-            this.loginService = loginService;
+            this.viewService = viewService;
+            this.accountService = accountService;
             InitializeComponent();
         }
 
@@ -27,7 +30,7 @@ namespace BankGUI
             usernameBox.Enabled = !loading;
             passwordBox.Enabled = !loading;
             submitButton.Enabled = !loading;
-            Cursor.Current = loading ? Cursors.WaitCursor : Cursors.Default;
+            Application.UseWaitCursor = loading;
             Application.DoEvents();
         }
 
@@ -38,7 +41,7 @@ namespace BankGUI
             Session session;
             try
             {
-                session = loginService.Login(usernameBox.Text, passwordBox.Text);
+                session = accountService.Login(usernameBox.Text, passwordBox.Text);
             }
             catch (InvalidCredentialsException ex)
             {
@@ -47,7 +50,9 @@ namespace BankGUI
                 return;
             }
 
-            MessageBox.Show("Authenticated!");
+            setLoading(false);
+            viewService.ShowMainMenuView(session);
+            Hide();
         }
     }
 }

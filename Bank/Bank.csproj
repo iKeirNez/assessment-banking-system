@@ -48,8 +48,8 @@
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\IAccountRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Service\LoginService.cs" />
-    <Compile Include="Service\ILoginService.cs" />
+    <Compile Include="Service\AccountService.cs" />
+    <Compile Include="Service\IAccountService.cs" />
     <Compile Include="Service\Session.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="BankApplication.cs" />
@@ -122,9 +122,6 @@
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
