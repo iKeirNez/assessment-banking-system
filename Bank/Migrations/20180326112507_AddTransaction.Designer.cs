@@ -11,9 +11,10 @@ using System;
 namespace BankServices.Migrations
 {
     [DbContext(typeof(MainContext))]
-    partial class AccountContextModelSnapshot : ModelSnapshot
+    [Migration("20180326112507_AddTransaction")]
+    partial class AddTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

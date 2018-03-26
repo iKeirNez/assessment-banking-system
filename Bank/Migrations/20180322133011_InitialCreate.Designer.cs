@@ -10,7 +10,7 @@ using System;
 
 namespace BankServices.Migrations
 {
-    [DbContext(typeof(AccountContext))]
+    [DbContext(typeof(MainContext))]
     [Migration("20180322133011_InitialCreate")]
     partial class InitialCreate
     {

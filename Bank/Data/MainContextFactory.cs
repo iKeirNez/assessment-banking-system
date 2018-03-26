@@ -4,18 +4,18 @@ using System;
 
 namespace BankServices.Data
 {
-    public class AccountContextFactory : IDesignTimeDbContextFactory<AccountContext>
+    public class MainContextFactory : IDesignTimeDbContextFactory<MainContext>
     {
-        public AccountContextFactory()
+        public MainContextFactory()
         {
         }
 
-        public AccountContext CreateDbContext(string[] args)
+        public MainContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<AccountContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<MainContext>();
             // TODO move connect string to external file
             optionsBuilder.UseSqlServer("Server=127.0.0.1;Database=qaDotNetAdvanced;User Id=app;Password=app;");
-            return new AccountContext(optionsBuilder.Options);
+            return new MainContext(optionsBuilder.Options);
         }
     }
 }

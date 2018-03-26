@@ -1,10 +1,8 @@
-﻿using Bank.Service;
+﻿using Bank.Exceptions;
+using Bank.Service;
 using BankGUI.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,20 +28,25 @@ namespace BankGUI.Views
         {
             var account = session.Account;
 
-            if (account.Balance < amount)
+            try
             {
-                MessageBox.Show(string.Format("You do not have enough funds to withdraw: £{0:0.00}", amount), "You broke boi");
+                accountService.Withdraw(account, amount);
+            }
+            catch (InsufficientFundsException ex)
+            {
+                MessageBox.Show(ex.Message, "You broke boi");
                 return;
             }
-
-            if (amount % 10 != 0)
+            catch (AmountNotMultipleOfTen ex)
             {
-                MessageBox.Show("Amount must be a multiple of 10.", "Invalid amount");
+                MessageBox.Show(ex.Message, "Invalid amount");
                 return;
             }
-
-            account.Balance -= amount;
-            accountService.UpdateAccount(account);
+            catch (WithdrawLimitException ex)
+            {
+                MessageBox.Show(ex.Message, "Withdrawal limitations");
+                return;
+            }
         }
 
         private void buttonWithdraw10_Click(object sender, EventArgs e)

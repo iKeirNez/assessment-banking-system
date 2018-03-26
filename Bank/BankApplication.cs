@@ -19,7 +19,7 @@ namespace Bank
         {
             var serviceCollection = new ServiceCollection();
             // TODO move connect string to external file
-            serviceCollection.AddDbContext<AccountContext>(options =>
+            serviceCollection.AddDbContext<MainContext>(options =>
                                                            options.UseSqlServer("Server=127.0.0.1;Database=qaDotNetAdvanced;User Id=app;Password=app;"));
             serviceCollection.AddSingleton<IAccountRepository, AccountRepository>();
             serviceCollection.AddSingleton<IAccountService, AccountService>();

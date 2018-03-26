@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{38CF9196-0753-4871-AD63-9AA66B8DE86F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Bank</RootNamespace>
     <AssemblyName>Bank</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -32,23 +32,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\AccountContext.cs" />
-    <Compile Include="Data\AccountContextFactory.cs" />
+    <Compile Include="Data\MainContext.cs" />
+    <Compile Include="Data\MainContextFactory.cs" />
     <Compile Include="Events\AccountSubscriptionService.cs" />
+    <Compile Include="Exceptions\AmountNotMultipleOfTen.cs" />
+    <Compile Include="Exceptions\InsufficientFundsException.cs" />
+    <Compile Include="Exceptions\WithdrawLimitException.cs" />
     <Compile Include="Migrations\20180322133011_InitialCreate.cs" />
     <Compile Include="Migrations\20180322133011_InitialCreate.Designer.cs">
       <DependentUpon>20180322133011_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180326112507_AddTransaction.cs" />
+    <Compile Include="Migrations\20180326112507_AddTransaction.designer.cs">
+      <DependentUpon>20180326112507_AddTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\IAccountRepository.cs" />
-    <Compile Include="Startup.cs" />
     <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\IAccountService.cs" />
     <Compile Include="Service\Session.cs" />
