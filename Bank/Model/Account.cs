@@ -50,5 +50,17 @@ namespace Bank.Model
         private Account()
         {
         }
+
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="accountNumber">the account number</param>
+        /// <param name="pin">the pin</param>
+        public Account(string accountNumber, string pin)
+        {
+            AccountNumber = accountNumber;
+            Pin = pin;
+            Balance = 0;
+        }
     }
 }
