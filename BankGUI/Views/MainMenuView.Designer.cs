@@ -61,6 +61,7 @@
             this.logoutButton.TabIndex = 3;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // withdrawButton
             // 
@@ -72,7 +73,7 @@
             this.withdrawButton.UseVisualStyleBackColor = true;
             this.withdrawButton.Click += new System.EventHandler(this.withdrawButton_Click);
             // 
-            // MainMenu
+            // MainMenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,7 +82,7 @@
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.welcomeLabel);
-            this.Name = "MainMenu";
+            this.Name = "MainMenuView";
             this.Text = "Main Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formClosed);
             this.ResumeLayout(false);

@@ -58,5 +58,11 @@ namespace BankGUI.Interface
         {
             Application.Exit();
         }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            viewService.ShowLoginView();
+        }
     }
 }
