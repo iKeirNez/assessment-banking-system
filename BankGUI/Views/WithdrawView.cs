@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace BankGUI.Views
 {
-    public partial class Withdraw : Form
+    public partial class WithdrawView : Form
     {
         private ViewService viewService;
         private IAccountService accountService;
         private Session session;
 
-        public Withdraw(ViewService viewService, IAccountService accountService, Session session)
+        public WithdrawView(ViewService viewService, IAccountService accountService, Session session)
         {
             this.viewService = viewService;
             this.accountService = accountService;

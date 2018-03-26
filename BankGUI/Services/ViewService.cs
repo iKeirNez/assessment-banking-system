@@ -19,24 +19,24 @@ namespace BankGUI.Services
             this.accountService = accountService;
         }
 
-        public Login ShowLoginView()
+        public LoginView ShowLoginView()
         {
-            var view = new Login(this, accountService);
+            var view = new LoginView(this, accountService);
             view.Show();
             return view;
         }
 
-        public MainMenu ShowMainMenuView(Session session)
+        public MainMenuView ShowMainMenuView(Session session)
         {
-            var view = new MainMenu(this, accountService, session);
+            var view = new MainMenuView(this, accountService, session);
             view.UpdateDisplay();
             view.Show();
             return view;
         }
 
-        public Withdraw ShowWithdrawView(Session session)
+        public WithdrawView ShowWithdrawView(Session session)
         {
-            var view = new Withdraw(this, accountService, session);
+            var view = new WithdrawView(this, accountService, session);
             view.Show();
             return view;
         }

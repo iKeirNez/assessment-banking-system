@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BankGUI.Interface
 {
-    public partial class MainMenu : Form
+    public partial class MainMenuView : Form
     {
         private ViewService viewService;
         private Session session;
@@ -21,7 +21,7 @@ namespace BankGUI.Interface
         private string welcomeLabelFormat;
         private string balanceLabelFormat;
 
-        public MainMenu(ViewService viewService, IAccountService accountService, Session session)
+        public MainMenuView(ViewService viewService, IAccountService accountService, Session session)
         {
             this.viewService = viewService;
             this.session = session;

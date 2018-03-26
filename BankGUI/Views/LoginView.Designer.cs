@@ -1,6 +1,6 @@
 ﻿namespace BankGUI
 {
-    partial class Login
+    partial class LoginView
     {
         /// <summary>
         /// Required designer variable.

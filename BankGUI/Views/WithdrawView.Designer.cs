@@ -1,6 +1,6 @@
 ﻿namespace BankGUI.Views
 {
-    partial class Withdraw
+    partial class WithdrawView
     {
         /// <summary>
         /// Required designer variable.

@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace BankGUI
 {
-    public partial class Login : Form
+    public partial class LoginView : Form
     {
         private ViewService viewService;
         private IAccountService accountService;
 
-        public Login(ViewService viewService, IAccountService accountService)
+        public LoginView(ViewService viewService, IAccountService accountService)
         {
             this.viewService = viewService;
             this.accountService = accountService;
