@@ -37,7 +37,7 @@ namespace BankGUI.Views
                 MessageBox.Show(ex.Message, "You broke boi");
                 return;
             }
-            catch (AmountNotMultipleOfTen ex)
+            catch (AmountException ex)
             {
                 MessageBox.Show(ex.Message, "Invalid amount");
                 return;

@@ -34,6 +34,11 @@ namespace Bank.Service
 
         public Transaction Withdraw(Account account, double amount)
         {
+            if (amount <= 0)
+            {
+                throw new AmountException("Amount must be bigger than 0.");
+            }
+
             if (account.Balance < amount)
             {
                 throw new InsufficientFundsException(string.Format("You do not have enough funds to withdraw: £{0:0.00}", amount));
@@ -41,7 +46,7 @@ namespace Bank.Service
 
             if (amount % 10 != 0)
             {
-                throw new AmountNotMultipleOfTen("Amount must be a multiple of 10.");
+                throw new AmountException("Amount must be a multiple of 10.");
             }
 
             var transactions = accountRepository.GetTransactionsForAccountOnDate(account.Id, DateTimeOffset.UtcNow.Date);

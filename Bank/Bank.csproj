@@ -43,7 +43,7 @@
     <Compile Include="Data\MainContext.cs" />
     <Compile Include="Data\MainContextFactory.cs" />
     <Compile Include="Events\AccountSubscriptionService.cs" />
-    <Compile Include="Exceptions\AmountNotMultipleOfTen.cs" />
+    <Compile Include="Exceptions\AmountException.cs" />
     <Compile Include="Exceptions\InsufficientFundsException.cs" />
     <Compile Include="Exceptions\WithdrawLimitException.cs" />
     <Compile Include="Migrations\20180322133011_InitialCreate.cs" />
