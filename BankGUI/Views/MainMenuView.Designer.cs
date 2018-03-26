@@ -49,9 +49,9 @@
             this.balanceLabel.AutoSize = true;
             this.balanceLabel.Location = new System.Drawing.Point(13, 37);
             this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(102, 13);
+            this.balanceLabel.Size = new System.Drawing.Size(132, 13);
             this.balanceLabel.TabIndex = 1;
-            this.balanceLabel.Text = "Current balance: {0}";
+            this.balanceLabel.Text = "Current balance: £{0:0.00}";
             // 
             // logoutButton
             // 
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 396);
+            this.ClientSize = new System.Drawing.Size(383, 164);
             this.Controls.Add(this.withdrawButton);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.balanceLabel);
