@@ -53,6 +53,7 @@ namespace BankGUI
             setLoading(false);
             viewService.ShowMainMenuView(session);
             Hide();
+            Dispose();
         }
 
         private void LoginView_FormClosed(object sender, FormClosedEventArgs e)
