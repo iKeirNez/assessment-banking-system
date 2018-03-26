@@ -40,18 +40,18 @@
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Location = new System.Drawing.Point(13, 13);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.usernameLabel.Size = new System.Drawing.Size(50, 13);
             this.usernameLabel.TabIndex = 0;
-            this.usernameLabel.Text = "Username:";
+            this.usernameLabel.Text = "Account:";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Location = new System.Drawing.Point(13, 40);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(56, 13);
+            this.passwordLabel.Size = new System.Drawing.Size(28, 13);
             this.passwordLabel.TabIndex = 1;
-            this.passwordLabel.Text = "Password:";
+            this.passwordLabel.Text = "PIN:";
             // 
             // usernameBox
             // 
@@ -78,7 +78,7 @@
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // Login
+            // LoginView
             // 
             this.AcceptButton = this.submitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -89,7 +89,7 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameLabel);
-            this.Name = "Login";
+            this.Name = "LoginView";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
