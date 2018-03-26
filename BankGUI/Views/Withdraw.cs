@@ -32,7 +32,13 @@ namespace BankGUI.Views
 
             if (account.Balance < amount)
             {
-                MessageBox.Show(string.Format("You do not have enough funds to withdraw: {0}", amount), "You broke boi");
+                MessageBox.Show(string.Format("You do not have enough funds to withdraw: £{0:0.00}", amount), "You broke boi");
+                return;
+            }
+
+            if (amount % 10 != 0)
+            {
+                MessageBox.Show("Amount must be a multiple of 10.", "Invalid amount");
                 return;
             }
 
@@ -78,6 +84,11 @@ namespace BankGUI.Views
         private void buttonWithdraw250_Click(object sender, EventArgs e)
         {
             doWithdraw(250);
+        }
+
+        private void buttonWithdrawCustom_Click(object sender, EventArgs e)
+        {
+            doWithdraw((double)inputCustomAmount.Value);
         }
     }
 }

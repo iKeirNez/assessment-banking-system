@@ -36,6 +36,12 @@
             this.buttonWithdraw40 = new System.Windows.Forms.Button();
             this.buttonWithdraw20 = new System.Windows.Forms.Button();
             this.buttonWithdraw200 = new System.Windows.Forms.Button();
+            this.buttonWithdrawCustom = new System.Windows.Forms.Button();
+            this.labelCustomAmount = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.inputCustomAmount = new System.Windows.Forms.NumericUpDown();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inputCustomAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonWithdraw10
@@ -126,11 +132,59 @@
             this.buttonWithdraw200.UseVisualStyleBackColor = true;
             this.buttonWithdraw200.Click += new System.EventHandler(this.buttonWithdraw200_Click);
             // 
+            // buttonWithdrawCustom
+            // 
+            this.buttonWithdrawCustom.Location = new System.Drawing.Point(6, 51);
+            this.buttonWithdrawCustom.Name = "buttonWithdrawCustom";
+            this.buttonWithdrawCustom.Size = new System.Drawing.Size(101, 37);
+            this.buttonWithdrawCustom.TabIndex = 8;
+            this.buttonWithdrawCustom.Text = "Withdraw";
+            this.buttonWithdrawCustom.UseVisualStyleBackColor = true;
+            this.buttonWithdrawCustom.Click += new System.EventHandler(this.buttonWithdrawCustom_Click);
+            // 
+            // labelCustomAmount
+            // 
+            this.labelCustomAmount.AutoSize = true;
+            this.labelCustomAmount.Location = new System.Drawing.Point(16, 6);
+            this.labelCustomAmount.Name = "labelCustomAmount";
+            this.labelCustomAmount.Size = new System.Drawing.Size(81, 13);
+            this.labelCustomAmount.TabIndex = 10;
+            this.labelCustomAmount.Text = "Custom Amount";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.inputCustomAmount);
+            this.panel1.Controls.Add(this.labelCustomAmount);
+            this.panel1.Controls.Add(this.buttonWithdrawCustom);
+            this.panel1.Location = new System.Drawing.Point(136, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(113, 100);
+            this.panel1.TabIndex = 11;
+            // 
+            // inputCustomAmount
+            // 
+            this.inputCustomAmount.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.inputCustomAmount.Location = new System.Drawing.Point(6, 25);
+            this.inputCustomAmount.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.inputCustomAmount.Name = "inputCustomAmount";
+            this.inputCustomAmount.Size = new System.Drawing.Size(101, 20);
+            this.inputCustomAmount.TabIndex = 11;
+            // 
             // Withdraw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonWithdraw200);
             this.Controls.Add(this.buttonWithdraw20);
             this.Controls.Add(this.buttonWithdraw40);
@@ -141,6 +195,9 @@
             this.Controls.Add(this.buttonWithdraw10);
             this.Name = "Withdraw";
             this.Text = "Withdraw";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inputCustomAmount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -155,5 +212,9 @@
         private System.Windows.Forms.Button buttonWithdraw40;
         private System.Windows.Forms.Button buttonWithdraw20;
         private System.Windows.Forms.Button buttonWithdraw200;
+        private System.Windows.Forms.Button buttonWithdrawCustom;
+        private System.Windows.Forms.Label labelCustomAmount;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown inputCustomAmount;
     }
 }
