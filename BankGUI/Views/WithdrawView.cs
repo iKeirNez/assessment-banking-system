@@ -30,21 +30,22 @@ namespace BankGUI.Views
 
             try
             {
-                accountService.Withdraw(account, amount);
+                var transaction = accountService.Withdraw(account, amount);
+                MessageBox.Show(string.Format("Successfully withdrew £{0:0.00}.", -transaction.Amount), "Success");
             }
             catch (InsufficientFundsException ex)
             {
-                MessageBox.Show(ex.Message, "You broke boi");
+                MessageBox.Show(ex.Message, "Insufficient Funds");
                 return;
             }
             catch (AmountException ex)
             {
-                MessageBox.Show(ex.Message, "Invalid amount");
+                MessageBox.Show(ex.Message, "Invalid Amount");
                 return;
             }
             catch (WithdrawLimitException ex)
             {
-                MessageBox.Show(ex.Message, "Withdrawal limitations");
+                MessageBox.Show(ex.Message, "Withdrawal Limit");
                 return;
             }
         }
