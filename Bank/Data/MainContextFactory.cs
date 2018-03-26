@@ -2,8 +2,11 @@
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 
-namespace BankServices.Data
+namespace Bank.Data
 {
+    /// <summary>
+    /// Provides Entity Framework migrations with a means of connecting to the database outside of runtime.
+    /// </summary>
     public class MainContextFactory : IDesignTimeDbContextFactory<MainContext>
     {
         public MainContextFactory()

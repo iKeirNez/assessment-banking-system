@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bank.Model;
-using BankServices.Data;
-using BankServices.Model;
+using Bank.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BankServices.Repository
+namespace Bank.Repository
 {
+    /// <summary>
+    /// An Entity Framework implementation of <see cref="IAccountRepository"/>.
+    /// </summary>
     public class AccountRepository : IAccountRepository
     {
         private IServiceProvider serviceProvider;

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Exceptions
 {
+    /// <summary>
+    /// An exception which is thrown when there is an issue with a user entered amount (e.g. negative).
+    /// </summary>
     public class AmountException : Exception
     {
         public AmountException()

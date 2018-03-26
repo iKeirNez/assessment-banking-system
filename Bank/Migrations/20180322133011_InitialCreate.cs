@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace BankServices.Migrations
+namespace Bank.Migrations
 {
     public partial class InitialCreate : Migration
     {

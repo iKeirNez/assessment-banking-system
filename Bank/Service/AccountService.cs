@@ -3,11 +3,13 @@ using System.Linq;
 using Bank.Events;
 using Bank.Exceptions;
 using Bank.Model;
-using BankServices.Model;
-using BankServices.Repository;
+using Bank.Repository;
 
 namespace Bank.Service
 {
+    /// <summary>
+    /// An implementation of <see cref="IAccountService"/> using <see cref="IAccountRepository"/>.
+    /// </summary>
     public class AccountService : IAccountService
     {
         public AccountSubscriptionService SubscriptionService { get; private set; }
@@ -20,11 +22,11 @@ namespace Bank.Service
             SubscriptionService = new AccountSubscriptionService();
         }
 
-        public Session Login(string accountNumber, string password)
+        public Session Login(string accountNumber, string pin)
         {
             var account = accountRepository.GetByAccountNumber(accountNumber);
 
-            if (account == null || account.Pin != password)
+            if (account == null || account.Pin != pin)
             {
                 throw new InvalidCredentialsException("An account wasn't found with that username/password combination.");
             }
@@ -50,23 +52,22 @@ namespace Bank.Service
             }
 
             var transactions = accountRepository.GetTransactionsForAccountOnDate(account.Id, DateTimeOffset.UtcNow.Date);
-            var withdrawn = transactions.Select(t => t.Amount).Where(a => a > 0).Sum();
-            if (withdrawn + amount > 250)
+            var withdrawn = transactions.Select(t => t.Amount).Where(a => a < 0).Sum();
+            if (withdrawn - amount < -250)
             {
-                throw new WithdrawLimitException(string.Format("Withdrawing £{0:0.00} would cause you to go over your withdrawal limit of £{1:0.00}, you have withdrawn £{2:0.00} already today.", amount, 250, withdrawn));
+                throw new WithdrawLimitException(string.Format("Withdrawing £{0:0.00} would cause you to go over your withdrawal limit of £{1:0.00}, you have withdrawn £{2:0.00} already today.", amount, 250, -withdrawn));
             }
 
-            var transaction = new Transaction(account.Id, amount, DateTimeOffset.UtcNow);
+            var transaction = new Transaction(account.Id, -amount, DateTimeOffset.UtcNow);
             accountRepository.AddTransaction(transaction);
 
             account.Balance -= amount;
-            accountRepository.UpdateAccount(account);
-            SubscriptionService.OnAccountChangedEvent(account);
+            UpdateAccount(account);
 
             return transaction;
         }
 
-        public void UpdateAccount(Account account)
+        private void UpdateAccount(Account account)
         {
             accountRepository.UpdateAccount(account);
             SubscriptionService.OnAccountChangedEvent(account);

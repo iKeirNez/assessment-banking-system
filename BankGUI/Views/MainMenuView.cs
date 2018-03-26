@@ -1,6 +1,6 @@
 ﻿using Bank.Service;
 using BankGUI.Services;
-using BankServices.Model;
+using Bank.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Exceptions
 {
+    /// <summary>
+    /// An exception which is thrown when the operation would cause the account to exceed it's withdrawal limit.
+    /// </summary>
     public class WithdrawLimitException : Exception
     {
         public WithdrawLimitException()

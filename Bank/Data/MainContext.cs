@@ -1,10 +1,13 @@
 ﻿using System;
 using Bank.Model;
-using BankServices.Model;
+using Bank.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankServices.Data
+namespace Bank.Data
 {
+    /// <summary>
+    /// The main database context for Entity Framework.
+    /// </summary>
     public class MainContext : DbContext
     {
         public DbSet<Account> Accounts { get; set; }

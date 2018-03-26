@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Exceptions
 {
+    /// <summary>
+    /// An exception which is thrown when the account doesn't have enough funds to perform the operation.
+    /// </summary>
     public class InsufficientFundsException : Exception
     {
         public InsufficientFundsException()

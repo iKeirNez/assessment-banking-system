@@ -1,20 +1,29 @@
 ﻿using System;
 using Bank.Service;
-using BankServices.Data;
-using BankServices.Repository;
+using Bank.Data;
+using Bank.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bank
 {
+    /// <summary>
+    /// The entrypoint for the backend of the application.
+    /// </summary>
     public class BankApplication
     {
         public IServiceProvider ServiceProvider { get; private set; }
 
+        /// <summary>
+        /// The constructor.
+        /// </summary>
         public BankApplication()
         {
         }
 
+        /// <summary>
+        /// Initializes the backend of the application (ie dependency injection and logging).
+        /// </summary>
         public void Init()
         {
             var serviceCollection = new ServiceCollection();
