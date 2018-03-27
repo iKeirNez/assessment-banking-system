@@ -34,6 +34,12 @@ namespace Bank.Data
         {
             var accounts = new List<Account>();
 
+            var myAccount = new Account("66534", "8899");
+            myAccount.FirstName = "Keir";
+            myAccount.LastName = "Nellyer";
+            myAccount.Balance = 2600;
+            accounts.Add(myAccount);
+
             var account1 = new Account("example-1", "1470");
             account1.FirstName = "Graham";
             account1.LastName = "Hastings";
