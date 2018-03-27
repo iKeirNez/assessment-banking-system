@@ -1,4 +1,4 @@
-﻿namespace BankGUI.Interface
+﻿namespace BankGUI.Views
 {
     partial class MainMenuView
     {

@@ -1,4 +1,4 @@
-﻿namespace BankGUI
+﻿namespace BankGUI.Views
 {
     partial class LoginView
     {

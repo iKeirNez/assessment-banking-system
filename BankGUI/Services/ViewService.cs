@@ -1,5 +1,4 @@
 ﻿using Bank.Service;
-using BankGUI.Interface;
 using BankGUI.Views;
 using System;
 using System.Collections.Generic;
@@ -40,7 +39,7 @@ namespace BankGUI.Services
         public MainMenuView ShowMainMenuView(Session session)
         {
             var view = new MainMenuView(this, accountService, session);
-            view.UpdateDisplay();
+            view.UpdateAccountDisplay();
             view.Show();
             return view;
         }
