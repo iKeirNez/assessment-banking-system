@@ -45,7 +45,7 @@ namespace BankGUI
             }
             catch (InvalidCredentialsException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Invalid Credentials");
                 setLoading(false);
                 return;
             }
