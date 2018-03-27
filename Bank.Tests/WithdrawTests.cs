@@ -145,7 +145,38 @@ namespace Bank.Tests
 
             // check no changes made it to the repository
             mockRepo.Verify(r => r.UpdateAccount(It.IsAny<Account>()), Times.Never, "The repository method update account shouldn't have run as the action was illegal");
-            mockRepo.Verify(r => r.AddTransaction(It.IsAny<Transaction>()), Times.Never, "The repository method add transaction shouldn't have run as the action was illegal");
+            mockRepo.Verify(r => r.AddTransaction(It.IsAny<Transaction>()), Times.Never, "The repository method add transaction shouldn't have been invoked as the action was illegal");
+        }
+
+        /// <summary>
+        /// Tests that an exception is thrown when attempting to withdraw an amount which is not a multiple of 10 (it £12).
+        /// </summary>
+        [TestMethod]
+        public void Withdraw_NotMultipleOfTen_Exception()
+        {
+            // setup entities
+            var account = ObjectBuilder.BuildAccount(null);
+            account.Balance = 1000;
+
+            // setup repo
+            var mockRepo = new Mock<IAccountRepository>(MockBehavior.Strict);
+            mockRepo.Setup(r => r.UpdateAccount(It.IsAny<Account>())).Verifiable();
+            mockRepo.Setup(r => r.AddTransaction(It.IsAny<Transaction>())).Verifiable();
+
+            var accountService = new AccountService(mockRepo.Object);
+
+            accountService.Invoking(s =>
+            {
+                using (var subscriptionService = s.SubscriptionService.Monitor())
+                {
+                    s.Withdraw(account, 12);
+                    subscriptionService.Should().NotRaise("AccountChangedEvent", "because the illegal action should not cause an update");
+                }
+            }).Should().ThrowExactly<AmountException>("because we attempted to withdraw 12 from an account which is not a multiple of 10");
+
+            // check no changes were made to the repository
+            mockRepo.Verify(r => r.UpdateAccount(It.IsAny<Account>()), Times.Never, "The repository method update account shouldn't have been invoked as the action was illegal");
+            mockRepo.Verify(r => r.AddTransaction(It.IsAny<Transaction>()), Times.Never, "The repository method add transaction shouldn't have been invoked as the action was illegal");
         }
     }
 }
