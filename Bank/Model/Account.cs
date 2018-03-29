@@ -17,26 +17,31 @@ namespace Bank.Model
         /// <summary>
         /// The first name.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// The last name.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
         /// <summary>
         /// The address.
         /// </summary>
+        [Required]
         public string Address { get; set; }
 
         /// <summary>
         /// The account number.
         /// </summary>
+        [Required]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// The pin (password).
         /// </summary>
+        [Required]
         public string Pin { get; set; }
 
         /// <summary>

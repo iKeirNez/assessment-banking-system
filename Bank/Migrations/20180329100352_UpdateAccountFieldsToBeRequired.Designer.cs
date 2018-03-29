@@ -11,9 +11,10 @@ using System;
 namespace Bank.Migrations
 {
     [DbContext(typeof(MainContext))]
-    partial class AccountContextModelSnapshot : ModelSnapshot
+    [Migration("20180329100352_UpdateAccountFieldsToBeRequired")]
+    partial class UpdateAccountFieldsToBeRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

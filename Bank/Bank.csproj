@@ -55,6 +55,10 @@
     <Compile Include="Migrations\20180326112507_AddTransaction.designer.cs">
       <DependentUpon>20180326112507_AddTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180329100352_UpdateAccountFieldsToBeRequired.cs" />
+    <Compile Include="Migrations\20180329100352_UpdateAccountFieldsToBeRequired.designer.cs">
+      <DependentUpon>20180329100352_UpdateAccountFieldsToBeRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Transaction.cs" />
