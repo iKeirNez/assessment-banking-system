@@ -37,24 +37,28 @@ namespace Bank.Data
             var myAccount = new Account("66534", "8899");
             myAccount.FirstName = "Keir";
             myAccount.LastName = "Nellyer";
+            myAccount.Address = "City Centre, Edinburgh";
             myAccount.Balance = 2600;
             accounts.Add(myAccount);
 
             var account1 = new Account("example-1", "1470");
             account1.FirstName = "Graham";
             account1.LastName = "Hastings";
+            account1.Address = "East Kilbride, Glasgow";
             account1.Balance = 1500;
             accounts.Add(account1);
 
             var account2 = new Account("example-2", "1590");
             account2.FirstName = "Fiona";
             account2.LastName = "Lavender";
+            account2.Address = "Lenzie, Glasgow";
             account2.Balance = 9800;
             accounts.Add(account2);
 
             var account3 = new Account("example-3", "1287");
             account3.FirstName = "Felix";
             account3.LastName = "Huberg";
+            account3.Address = "Kirkintilloch, Glasgow";
             account3.Balance = 200;
             accounts.Add(account3);
 
